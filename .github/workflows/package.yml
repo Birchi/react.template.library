@@ -1,0 +1,32 @@
+name: Package build
+on: push
+jobs:
+  test_package:
+    runs-on: package-builder
+    environment: Production
+    steps:
+    - uses: actions/checkout@v4
+    - name: Test package
+      run: |
+        npm install
+        npm run test
+  build_package:
+    runs-on: package-builder
+    environment: Production
+    needs: test_package
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build package
+      run: |
+        npm install
+        npm run build
+  deploy_package:
+    runs-on: container-builder
+    environment: Production
+    needs: build_package
+    steps:
+    - uses: actions/checkout@v4
+    - name: Deploy container image
+      run: |
+        # Make the login happen 
+        npm publish --access public
