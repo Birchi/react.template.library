@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+      "module": "esnext",
+      "target": "es5",
+      "lib": ["es2022", "dom"],
+      "jsx": "react",
+      "moduleResolution": "node",
+      "declaration": true,
+      "declarationDir": "./build/definition", 
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "esModuleInterop": true,
+      "noImplicitReturns": true,
+      "noImplicitThis": true,
+      "noImplicitAny": true,
+      "strictNullChecks": true,
+      "allowSyntheticDefaultImports": true,
+      "outDir": "build/library"
+    },
+    "exclude": ["**/.*/", "**/build", "**/node_modules"],
+    "include": ["src"]
+}
